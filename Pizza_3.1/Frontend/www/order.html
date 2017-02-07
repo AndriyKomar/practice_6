@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Pizza</title>
+
+    <!-- Bootsrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- LESS основний файл -->
+    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
+    <!-- LESS JavaScript компілятор -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+
+
+</head>
+<body>
+    
+    
+    <div class="order_board">
+        <div class="top-panel">
+            <div class="order">Замовлення</div>
+            <span class="amount">0</span>
+            <span class="clean-order">Очистити замовлення</span>
+        </div>
+        <div class="main-panel">
+            <div class="board-label">
+                Порожньо в холодильнику?
+                <br> Замовте піцу!
+            </div>
+            <div id="cart"></div>
+        </div>
+        <div class="bottom-panel">
+            <div class="sum_text" >Сума замовлення</div>
+            <div class="sum" style="display:none"></div>
+            <button class="order_button">Замовити</button> 
+        </div>
+    </div>
+    
+    <div class="top_line">
+            <div class="contact-1">
+                <span class="phone">(044) 222 5 222</span>
+                <span class="time">24 години/ 7 днів на тиждень</span>
+                <span class="label">Безкоштовна доставка піци</span>
+                <button type="button" class="btn btn-warning active">ВВійти</button> 
+            </div>
+            <dive class="my-line">-</dive>
+            <div class="contact-2">
+                <a href="index.html">Піца</a>
+            </div>
+        </div>
+        
+        <div class="banner-top">
+                    <h5>PIZZA</h5>
+                    <p>KMA</p>
+                    <img src="assets/images/discount.svg">
+         </div>
+    
+    <div class="container">
+        <div class="order-container">
+        <div class="head">
+            Контактні дані
+        </div>
+        <div class="col-ex-12 col-sm-12 col-md-8 form">
+            <div class="form-row" >
+                <div class="col-sm-2 text">
+                    Ім'я
+                </div>
+                <div class="col-sm-10">
+                    <input class="text-box" type="text" id="name" placeholder="Ім'я Фамілія">
+                </div>
+                
+            </div>
+            <span id="help_block_name" class="help_block" style="display:none">
+                Введіть тільки власне ім’я, без цифр
+            </span>
+            <div class="form-row">
+                <div class="col-sm-2 text">
+                    Телефон
+                </div>
+                <div class="col-sm-10">
+                    <input class="text-box" type="text" id="phone" placeholder="+380994010999" >
+                </div>
+            </div>
+            <span id="help_block_phone"class="help_block" style="display:none">
+                Введіть номер телефону у форматі +380 
+            </span>
+            <div class="form-row">
+                 <div class="col-sm-2 text">
+                    Адреса
+                </div>
+                <div class="col-sm-10">
+                    <input class="text-box" type="text" id="adress" placeholder="Київ, вул. Спаська, 2">
+                </div>   
+            </div>
+        </div>
+        <div class="col-ex-12 col-sm-12 col-md-4 ">
+            <div class="callout">
+                <div class="order-info">
+                    <h4>Інформація про замовлення</h4>
+                        <div class="row-info">
+                            <span class="text">Приблизний час доставки: </span>
+                            <span class="data-info-time"> невідомий</span>
+                        </div>
+                        <div class="row-info">
+                            <span class="text">Адреса доставки:  </span>
+                            <span class="data-info-adress">невідома</span>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div>
+             <button type="button" class="btn btn-warning bt-lg order-bt" id="continue">
+                   Далі >
+            </button>
+        </div>    
+    </div>
+    </div>
+    
+    <div class="banner-bottom">
+        <p>ЦЬОГО ТИЖНЯ НА ВСЕ</p>
+        <p class="points">.....................</p>
+        <p>-20%</p>
+        <img src="assets/images/discount.svg">
+    </div>
+
+<!-- jQuery JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+
+<!--Bootsrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!--Own JavaScript -->
+<script type="text/javascript"  src="assets/js/main.js"> </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+@mainColor: #FFA500;
+
+@import "pizza/pizza-card";
+@import "pizza/order_board";
+@import "pizza/order";
+
+@media(min-width: 1200px){
+    .container{
+        padding-left: 100px;
+        padding-right: 400px;
+    }
+}
+
+@media(max-width: 900px){
+    .time{
+        display: none;
+    }
+}
+
+@media(max-width: 1150px){
+    .label-consignment{
+        display: none;
+     }
+}
+
+@media(max-width: 640px){
+    .back{
+        .contact-1{
+            .phone{
+                font-size: 10px;
+            }
+            
+            .time{
+                margin: 0px;
+                display: none;
+            }
+            
+            .label{
+                margin: 0px;
+                display: none;
+            }
+            
+            button{
+                top: 30px;
+                right: 270px;
+            }
+        }
+        
+        .my-line{
+            margin-top: 0px;
+        }
+        
+        .contact-2{
+            display: none;
+        }
+    }
+    .main-panel{
+        .row-order{
+            .edit-order{
+                .delete{
+                        margin-left: 0px;
+                    }
+            }
+            
+        }
+    }
+    
+    .bottom-panel{
+        width: 270px;
+        
+        button{
+            width: 200px;
+        }
+    }
+    
+    .container{
+        padding-right: 270px;
+    }
+
+    .pizza-card {
+        margin: 0px;
+        margin-top: 15px;
+    }
+
+    .row{
+        margin: 5px;
+        margin-top: 20px
+    }
+
+    .order_board{
+        width: 270px;
+    } 
+}

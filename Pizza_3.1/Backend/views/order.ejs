@@ -1,0 +1,65 @@
+<% include common/header.ejs %>
+<% include common/order_board.ejs %>
+
+<div class="container">
+        <div class="order-container">
+        <div class="head">
+            Контактні дані
+        </div>
+        <div class="col-ex-12 col-sm-12 col-md-8 form">
+            <div class="form-row" >
+                <div class="col-sm-2 text">
+                    Ім'я
+                </div>
+                <div class="col-sm-10">
+                    <input class="text-box" type="text" id="name" placeholder="Ім'я Фамілія">
+                </div>
+                
+            </div>
+            <span id="help_block_name" class="help_block" style="display:none">
+                Введіть тільки власне ім’я, без цифр
+            </span>
+            <div class="form-row">
+                <div class="col-sm-2 text">
+                    Телефон
+                </div>
+                <div class="col-sm-10">
+                    <input class="text-box" type="text" id="phone" placeholder="+380994010999" >
+                </div>
+            </div>
+            <span id="help_block_phone" class="help_block" style="display:none">
+                Введіть номер телефону у форматі +380 
+            </span>
+            <div class="form-row">
+                 <div class="col-sm-2 text">
+                    Адреса
+                </div>
+                <div class="col-sm-10">
+                    <input class="text-box" type="text" id="adress" placeholder="Київ, вул. Спаська, 2">
+                </div>   
+            </div>
+        </div>
+        <div class="col-ex-12 col-sm-12 col-md-4 ">
+            <div class="callout">
+                <div class="order-info">
+                    <h4>Інформація про замовлення</h4>
+                        <div class="row-info">
+                            <span class="text">Приблизний час доставки: </span>
+                            <span class="data-info-time"> невідомий</span>
+                        </div>
+                        <div class="row-info">
+                            <span class="text">Адреса доставки:  </span>
+                            <span class="data-info-adress">невідома</span>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div>
+             <button type="button" class="btn btn-warning bt-lg order-bt" id="continue">
+                   Далі >
+            </button>
+        </div>    
+    </div>
+</div>
+
+<% include common/footer.ejs %>
