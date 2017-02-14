@@ -13,31 +13,43 @@ var PizzaSize = {
 //Змінна в якій зберігаються перелік піц в кошику
 var Cart = [];
 var amountPizza = 0;
-
+var totalSum;
+    
 var saveCart = Storage.get('cart', Cart);
 var saveAmount = Storage.get('amount', amountPizza);
+var saveSum = Storage.get('sum', totalSum);
 
 if(saveCart){
     Cart = saveCart;
     amountPizza = saveAmount;
+    totalSum = saveSum;
 }
 
 //HTML едемент куди будуть додаватися піци
 var $cart = $("#cart");
-var $totalPrice = $cart.find('.sum');
-
+var price = 0;
+    
 function addToCart(pizza, size) {
     var index = findInCart(pizza, size);
-
+    
+    if(size===PizzaSize.Big){
+        price = pizza.big_size.price;
+    }
+    else{
+        price = pizza.small_size.price;        
+    }
+    
     if (index == -1) {
       amountPizza+=1;
       Cart.push({
           pizza: pizza,
           size: size,
+          price: price,
           quantity: 1
       });
     } else {
       ++Cart[index].quantity;
+        amountPizza+=1;
     }
 
     Storage.set("cart", Cart);
@@ -67,7 +79,7 @@ function removeFromCart(cart_item) {
 
     if (index != -1) {
       Cart.splice(index, 1);
-      Storage("cart", Cart);
+      Storage.set("cart", Cart);
     }
 
     //Після видалення оновити відображення
@@ -75,9 +87,7 @@ function removeFromCart(cart_item) {
 }
 
 function clearCart() {
-  Cart = [];
-
-  Storage.remove("cart");
+  Cart.splice(0, Cart.length);
   updateCart();
 }
 
@@ -93,25 +103,14 @@ function getPizzaInCart() {
     //Повертає піци які зберігаються в кошику
     return Cart;
 }
-
-function updateTotalPrice() {
-  var totalSum = 0;
-
-  for (var i = 0; i < Cart.length; ++i) {
-    var cart_item = Cart[i];
-
-    totalSum += cart_item.quantity * cart_item.pizza[cart_item.size].price;
-  }
-
-  $totalPrice.html(sum + " грн");
-}
-
+    
 function updateCart() {
     //Функція викликається при зміні вмісту кошика
     //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
     saveCart = Storage.get('cart', Cart);
     //Очищаємо старі піци в кошику
     $cart.html("");
+    totalSum = 0;
     if(amountPizza > 0){
         $(".board-label").attr("style", "display:none");
     }
@@ -123,11 +122,13 @@ function updateCart() {
         var html_code = Templates.PizzaCart_OneItem(cart_item);
 
         var $node = $(html_code);
+        
+        totalSum = totalSum + cart_item.quantity*cart_item.price;
 
         $node.find(".plus_button").click(function(){
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
-
+            amountPizza +=1;
             //Оновлюємо відображення
             updateCart();
         });
@@ -149,7 +150,7 @@ function updateCart() {
         
         $node.find(".delete").click(function(){
             //Видаляємо замовлену піцу
-            amountPizza -=1;
+            amountPizza = amountPizza - cart_item.quantity;
             removeFromCart(cart_item);
             
             //Оновлюємо відображення
@@ -158,7 +159,7 @@ function updateCart() {
         
         $(".clean-order").click(function(){
             //Очищаємо замовлення
-            countPizza = 0;
+            amountPizza = 0;
             clearCart();
             
             //Оновлюємо відображення
@@ -172,20 +173,19 @@ function updateCart() {
 
     Storage.set('cart', Cart);
     Storage.set('amount', amountPizza);
-    
     if(Cart.length>0){
-        $(".sum-text").removeAttr("style");
+        $(".order").removeAttr("disabled");
+        $(".sum_text").removeAttr("style");
         $(".sum").removeAttr("style");
         $(".sum").html(totalSum + " грн.");
-        $(".amount").html(countPizza);
+        $(".amount").html(amountPizza);
     }
     else{
-        $(".sum-text").attr("style", "display:none");
+        $(".order").attr("disabled", "disabled");
+        $(".sum_text").attr("style", "display:none");
         $(".sum").attr("style", "display:none");
-        $(".amount").html(countPizza);
+        $(".amount").html(amountPizza);
     }
-    
-    updateTotalPrice();
 }
 
 exports.removeFromCart = removeFromCart;

@@ -1,52 +1,38 @@
-var API = require('../API');
-var PizzaCart = require('./PizzaCart');
-
-function newOrder() {
-    var number_field = /^[0-9]*$/;
-
-    var name_field = /^[А-Я]{0,2}[а-я]{1,30}( [А-Я]{0,2}[а-я]{1,30}){0,2}$|^[A-Z]{0,2}[a-z]{1,30}( [A-Z]{0,2}[a-z]{1,30}){0,2}$/;
-    function checkName(name){
-        if(name!="" && name_field.test(name)){
-            $("#help_block_name").attr("style", "display:none");
-            $("#name").addClass("has-success");
-            return true;
-        }
-        else{
-            $("#help_block_name").addClass("has-success");
-            $("#help_block_name").removeAttr("style");
-            return false;
-        }  
+function validName() {
+    $("#help_block_name").addClass("not_show");
+    var re = /^[A-Z]{1}[a-z]+[" "][A-Z]{1}[a-z]+$|^[А-Я]{1}[а-я]+[" "][А-Я]{1}[а-я]+$/;
+    var myName = document.getElementById('name').value;
+    var valid = re.test(myName);    
+    if (valid){
+       document.getElementById('help_block_name').style.display='none';
+        document.getElementById('block_name').style.color='green';
+        document.getElementById('name').style.borderColor='green';
+    } 
+    else{
+        document.getElementById('help_block_name').style.display='';
+        document.getElementById('block_name').style.color='red';
+        document.getElementById('name').style.borderColor='red';
     }
-    var name;
-    $("#name").keypress(function(e) {
-        if(e.which == 13) {
-            name = $("#name").val();
-            checkName(name);
-        }
-    });   
-    
-    
-    function checkPhone(phone){
-        if(phone!="" && number_field.test(phone)){
-            $("#help_block_phone").attr("style", "display:none");
-            $("#phone").addClass("has-success");
-            return true;
-        }
-        else{
-            $("#help_block_phone").addClass("has-success");
-            $("#help_block_phone").removeAttr("style");
-            return false;
-        }  
-    }
-    
-    var phone;
-    $("#phone").keypress(function(e) {
-        if(e.which == 13) {
-            phone = $("#phone").val();
-            checkPhone(phone);
-        }
-    });
-    
 }
 
-exports.newOrder = newOrder;
+function validPhone() {
+    var re = /^\+380\d{9}$|^\d{10}$/;
+    var myPhone = document.getElementById('phone').value;
+    var valid = re.test(myPhone);
+    if (valid){
+       document.getElementById('help_block_phone').style.display='none';
+        document.getElementById('block_phone').style.color='green';
+        document.getElementById('phone').style.borderColor='green';
+    } 
+    else{
+        document.getElementById('help_block_phone').style.display='';
+        document.getElementById('block_phone').style.color='red';
+        document.getElementById('phone').style.borderColor='red';
+    }
+}
+
+function check(){
+    $("#continue").click(validName);
+    $("#continue").click(validPhone);
+}
+exports.check = check;

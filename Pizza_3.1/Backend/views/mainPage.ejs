@@ -1,7 +1,26 @@
 <% include common/header.ejs %>
-<% include common/order_board.ejs %>
 
-<div class="container">
+<div class="order_board">
+        <div class="top-panel">
+            <div class="order">Замовлення</div>
+            <span class="amount">0</span>
+            <span class="clean-order">Очистити замовлення</span>
+        </div>
+        <div class="main-panel">
+            <div class="board-label">
+                Порожньо в холодильнику?
+                <br> Замовте піцу!
+            </div>
+            <div id="cart"></div>
+            </div>
+        <div class="bottom-panel">
+            <div class="sum_text" >Сума замовлення</div>
+            <div class="sum" style="display:none"></div>
+            <a href="order.html"><button class="order_button">Замовити</button></a>
+        </div>
+    </div>
+    
+    <div class="container">
         
         <div class="menu">
             <div>
@@ -29,8 +48,6 @@
                 </li>
             </ul>
         </div>
-    
-    <div class="row" id="pizza_list"></div>
-</div>
+        <div class="row" id="pizza_list"></div>
 
 <% include common/footer.ejs %>

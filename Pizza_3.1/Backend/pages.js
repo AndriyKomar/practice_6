@@ -8,7 +8,5 @@ exports.mainPage = function(req, res) {
 };
 
 exports.orderPage = function(req, res) {
-    res.render('orderPage', {
-        pageTitle: 'Замовлення'
-    });
+    //TODO: implement
 };
